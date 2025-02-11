@@ -129,7 +129,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<div>
+				<div class="linked-video">
 					${ block.embed.html }
 				</div>
 				`
@@ -139,6 +139,7 @@ let renderBlock = (block) => {
 
 		// Linked audio!
 		else if (embed.includes('rich')) {
+			
 			// …up to you!
 		}
 	}

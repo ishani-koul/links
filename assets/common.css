@@ -61,14 +61,14 @@ h2 {
 	font-size: 1.2rem;
 	letter-spacing: 1rem;
 	color: var(--text-color);
-	margin-bottom: 4rem;
+	margin-bottom: 5rem;
 }
 
 .line {
 	width: 3rem;
 	height: 0.1rem; 
 	background-color: var(--text-color);
-	margin-left: 2.1rem;
+	margin-left: 0.5rem;
 }
 
 .descriptions {
@@ -76,7 +76,7 @@ h2 {
 	font-family: var(--font-family);
 	font-variation-settings: "wght" 300;
 	color: var(--text-color);
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	line-height: 1.4rem;
 } 
 
@@ -85,9 +85,10 @@ h2 {
 }
 
 .description2 {
-	margin-top: 0.5rem;
+	margin-top: 0.6rem;
 	font-variation-settings: "wght" 100;
-	max-width: 24rem;
+	max-width: 23rem;
+	line-height: 1.6rem;
 } 
 
 .video {
@@ -123,5 +124,17 @@ blockquote {
 	line-height: 2rem;
 	border-left: 3px solid #AEBA75;
 	padding-left: 1rem;
+}
+
+.linked-video iframe {
+	filter: grayscale(100%);
+}
+
+.linked-video iframe:hover {
+	filter: grayscale(0%);
+}
+
+#channel-users {
+	font-variation-settings:"wght" 300 ;
 }
 
