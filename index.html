@@ -1,50 +1,72 @@
-<html>
+<html lang="en">
 	<head>
-		<title> Links </title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Links Project</title>
 		<link href="assets/reset.css" rel="stylesheet">
 		<link href="assets/common.css" rel="stylesheet">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <script defer src="assets/arena.js"></script> -->
+
+		<!-- Fonts -->
+		 <!-- Scale Variable -->
+		<script>
+			(function(d) {
+			  var config = {
+				kitId: 'vey0tns',
+				scriptTimeout: 3000,
+				async: true
+			  },
+			  h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+			})(document);
+		  </script>
+
+		  <!-- Source Han Sans -->
+		<script>
+			(function(d) {
+			  var config = {
+				kitId: 'vey0tns',
+				scriptTimeout: 3000,
+				async: true
+			  },
+			  h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+			})(document);
+		</script>
 	</head>
 	<body>
-		<section>
-			<div>
-				<video autoplay muted loop class="background-video">
-					<source src="assets/leaves.mp4" type="video/mp4">
-					Video of leaves moving.
-				</video>
-				<div class="overlay">
-				</div>
+		<header>
+			<section class="left-side">
 				<div class="content">
 					<h1>静寂</h1>
-					<h2>Seijaku: Stillness in Motion</h2>
+					<h2>SEIJAKU</h2>
 				</div>
-			</div>
-		</section>
-		<section class="mediagrid">
-			<!-- Grid for all media -->
-			<div class="grid-container">
-				<!-- Image -->
-				<div class="grid-item">
-					<img src="assets/forestlight.jpg" alt="Sample Image">
+				<div class="line"></div>
+				<div class="descriptions">
+					<p class="description1">
+						(n) Stillness in motion
+					</p>
+					<p class="description2">
+						A website that brings together a collection of media to capture the essence of calm and create a sense of serenity.
+					</p>
 				</div>
-				<!-- Text -->
-				<div class="grid-item">
-					<p>Seijaku is a state of mind where you’re present, aware, and focused. It’s a way of being, a lifestyle for finding stillness.</p>
+			</section>
+			<section class="right-side">
+				<div>
+					<video autoplay muted loop class="video">
+						<source src="assets/leaves.mp4" type="video/mp4">
+						Video of leaves moving.
+					</video>
+					<!-- <div class="overlay"></div> -->
 				</div>
-				<!-- Audio -->
-				<div class="grid-item">
-					<a href="https://open.spotify.com/playlist/37i9dQZF1DX4Oe8zprVH3z?si=ohY1j9yIS3-T21qVp9r3DA">
-					  <img src="assets/zenmusic.JPG" alt="Listen to zen music">
-					  <span>Visit the Link</span>
-					</a>
-				</div>
-				<!-- PDF -->
-				<div class="grid-item">
-					<a href="https://enchantedcshel.medium.com/seijaku-word-of-the-day-71864f453bf8">
-						<img src="assets/zenmusic.JPG" alt="Read about Seijaku">
-					</a>
-				</div>
-			</div>
-		</section>
+			</section>
+		</header>
+		<main>
+			<section>
+				<div class="gallery" id="channel-blocks"></div>
+				<!-- <div id="channel-users"></div> -->
+			</section>
+		</main>
+		<footer>
+		<!-- Add things	 -->
+		</footer>
 	</body>
 </html>
