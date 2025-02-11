@@ -38,17 +38,14 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
-				<p><em>Link</em></p>
+			<div>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">Read Article ↗</a></p>
-			</li>
+				<p><a>Read Article ↗</a></p>
+			</div>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
 	}
@@ -86,10 +83,9 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
-					<p><em>Video</em></p>
+				<div>
 					<video controls src="${ block.attachment.url }"></video>
-				</li>
+				</div>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
 			// More on video, like the `autoplay` attribute:
@@ -98,6 +94,14 @@ let renderBlock = (block) => {
 
 		// Uploaded PDFs!
 		else if (attachment.includes('pdf')) {
+			let pdfItem = 
+		`
+			<div>
+				<a href="${block.attachment.url}" target="_blank">View PDF ↗</a>
+				<embed src="${block.attachment.url}" type="application/pdf" width="100%" height="500px">
+			</div>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', pdfItemItem);
 			// …up to you!
 		}
 
@@ -106,10 +110,10 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
-					<p><em>Audio</em></p>
-					<audio controls src="${ block.attachment.url }"></video>
-				</li>
+				<div>
+					<p> Audio here </p>
+					<audio controls src="${ block.attachment.url }"></audio>
+				</div>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
 			// More on audio: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -125,10 +129,9 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
-					<p><em>Linked Video</em></p>
+				<div>
 					${ block.embed.html }
-				</li>
+				</div>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
