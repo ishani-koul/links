@@ -93,3 +93,12 @@ h2 {
 	width: 100%;
 	object-fit: cover;
 }
+
+.gallery {
+	display: grid;
+	gap: 10rem;
+	width: 100%;
+	padding: 10rem;
+	box-sizing: border-box;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
