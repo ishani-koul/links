@@ -102,3 +102,18 @@ h2 {
 	box-sizing: border-box;
 	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
+
+img {
+	filter: blur(0.2rem) grayscale(80%);
+}
+
+img:hover {
+	filter: blur(0px) grayscale(0%);
+}
+
+/* Add blockquote designs */
+blockquote {
+	font-family: var(--font-family);
+	font-variation-settings: "wght" 100;
+}
+

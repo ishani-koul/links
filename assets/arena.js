@@ -6,26 +6,33 @@ document.head.appendChild(markdownIt);
 
 let channelSlug = 'seijaku';
 
+
 // First, let’s lay out some *functions*, starting with our basic metadata:
 let placeChannelInfo = (data) => {
 	// Target some elements in your HTML:
-	let channelTitle = document.getElementById('channel-title')
-	let channelDescription = document.getElementById('channel-description')
-	let channelCount = document.getElementById('channel-count')
-	let channelLink = document.getElementById('channel-link')
+	let channelTitle = document.getElementById('channel-title');
+	let channelDescription = document.getElementById('channel-description');
+	let channelCount = document.getElementById('channel-count');
+	let channelLink = document.getElementById('channel-link');
 
 	// Then set their content/attributes to our data:
-	channelTitle.innerHTML = data.title
-	channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
-	channelCount.innerHTML = data.length
+	channelTitle.innerHTML = data.title;
+	channelDescription.innerHTML = window.markdownit().render(data.metadata.description); // Converts Markdown → HTML
+	channelCount.innerHTML = data.length;
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
+
 
 
 // Then our big function for specific-block-type rendering:
 let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
-	let channelBlocks = document.getElementById('channel-blocks')
+	let channelBlocks = document.getElementById('channel-blocks'); //added here
+
+
+	//html element for the block 
+	let blockElement = document.createElement('div'); 
+	blockElement.dataset.date = block.created_at;
 
 	// Links!
 	if (block.class == 'Link') {
@@ -40,7 +47,7 @@ let renderBlock = (block) => {
 				</picture>
 				<h3>${ block.title }</h3>
 				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+				<p><a href="${ block.source.url }">Read Article ↗</a></p>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -48,11 +55,25 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
+		let imageItem = 
+			`
+				<div>
+					<img src="${ block.image.original.url }" alt="${ block.title }">
+				</div>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', imageItem);
 		// …up to you!
 	}
 
 	// Text!
 	else if (block.class == 'Text') {
+		let textItem = 
+		`
+			<div>
+				<blockquote>${block.content_html}</blockquote>
+			</div>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', textItem);
 		// …up to you!
 	}
 
@@ -139,19 +160,14 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
-	.then((response) => response.json()) // Return it as JSON data
-	.then((data) => { // Do stuff with the data
-		console.log(data) // Always good to check your response!
-		placeChannelInfo(data) // Pass the data to the first function
-
-		// Loop through the `contents` array (list), backwards. Are.na returns them in reverse!
+	.then((response) => response.json())
+	.then((data) => {
+		// console.log(data)
 		data.contents.reverse().forEach((block) => {
-			// console.log(block) // The data for a single block
-			renderBlock(block) // Pass the single block data to the render function
-		})
+			renderBlock(block);
+		});
 
-		// Also display the owner and collaborators:
-		let channelUsers = document.querySelector('#channel-users') // Show them together
-		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
-		renderUser(data.user, channelUsers)
-	})
+		let channelUsers = document.getElementById('channel-users');
+		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers));
+		renderUser(data.user, channelUsers);
+	 });
