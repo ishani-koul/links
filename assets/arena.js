@@ -29,25 +29,23 @@ let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
 	let channelBlocks = document.getElementById('channel-blocks'); //added here
 
-
 	//html element for the block 
-	let blockElement = document.createElement('div'); 
-	blockElement.dataset.date = block.created_at;
+	// let blockElement = document.createElement('div'); 
+	// blockElement.dataset.date = block.created_at;
 
 	// Links!
 	if (block.class == 'Link') {
-		let linkItem =
-			`
+		let linkItem = `
 			<div>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
-				<p><a>Read Article ↗</a></p>
+				<p><a href="${ block.source.url }" target="_blank">Read More ↗</a></p>
 			</div>
-			`
-		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
+		`;
+		channelBlocks.insertAdjacentHTML('beforeend', linkItem);
 	}
 
 	// Images!
@@ -139,13 +137,17 @@ let renderBlock = (block) => {
 
 		// Linked audio!
 		else if (embed.includes('rich')) {
-			
+			let linkedAudioItem =
+			`
+			<div class="linked-audio">
+				${ block.embed.html }
+			</div>
+			`
+			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem);
 			// …up to you!
 		}
 	}
 }
-
-
 
 // It‘s always good to credit your work:
 let renderUser = (user, container) => { // You can have multiple arguments for a function!
@@ -159,7 +161,6 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 		`
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
-
 
 
 // Now that we have said what we can do, go get the data:

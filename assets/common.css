@@ -135,6 +135,13 @@ blockquote {
 }
 
 #channel-users {
-	font-variation-settings:"wght" 300 ;
+	margin-left: 10rem;
+	display: flex;
+	gap: 20rem;
+}
+
+footer {
+	display: flex;
+	gap: 20rem;
 }
 
