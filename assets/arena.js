@@ -23,15 +23,10 @@ let placeChannelInfo = (data) => {
 }
 
 
-
 // Then our big function for specific-block-type rendering:
 let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
 	let channelBlocks = document.getElementById('channel-blocks'); //added here
-
-	//html element for the block 
-	// let blockElement = document.createElement('div'); 
-	// blockElement.dataset.date = block.created_at;
 
 	// Links!
 	if (block.class == 'Link') {
@@ -109,8 +104,8 @@ let renderBlock = (block) => {
 			let audioItem =
 				`
 				<div>
-					<p> Audio here </p>
-					<audio controls src="${ block.attachment.url }"></audio>
+					<p><em>Audio</em></p>
+					<audio controls src="${ block.attachment.url }"></video>
 				</div>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
