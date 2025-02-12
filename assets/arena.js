@@ -100,16 +100,14 @@ let renderBlock = (block) => {
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
-			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
 				<div>
-					<p><em>Audio</em></p>
-					<audio controls src="${ block.attachment.url }"></video>
+					<video controls src="${ block.attachment.url }"></video> 
 				</div>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
-			// More on audio: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+			// Ask why video works and not audio tag here
 		}
 	}
 
