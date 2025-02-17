@@ -94,7 +94,7 @@ let renderBlock = (block) => {
 				<embed src="${block.attachment.url}" type="application/pdf" width="100%" height="500px">
 			</div>
 		`
-		channelBlocks.insertAdjacentHTML('beforeend', pdfItemItem);
+		channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
 			// …up to you!
 		}
 
