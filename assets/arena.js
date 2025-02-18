@@ -170,35 +170,33 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		renderUser(data.user, channelUsers);
 	});
 
+
 // Function to check if an element is in the viewport
 function isInViewport(element) {
 	const rect = element.getBoundingClientRect();
 	return (
-	  rect.top >= 0 &&
-	  rect.left >= 0 &&
-	  rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-	  rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	  (rect.top >= 0) &&
+	  (rect.left >= 0) &&
+	  (rect.bottom <= window.innerHeight) &&
+	  (rect.right <= window.innerWidth)
 	);
-  }
-  
-  // Function to highlight elements on scroll and hide those outside the viewport
-  function highlightOnScroll() {
+}
+
+// Function to highlight elements on scroll and hide those outside the viewport
+function highlightOnScroll() {
 	// Get all list items (or the elements you want to highlight)
 	const items = document.querySelectorAll('li');
 	
 	// Loop through each item and check if it's in the viewport
 	items.forEach(item => {
-	  if (isInViewport(item)) {
+	if (isInViewport(item)) {
 		item.classList.add('highlight'); // Show the item
-	  } else {
+	} else {
 		item.classList.remove('highlight'); // Hide the item
-	  }
+	}
 	});
-  }
-  
-  // Attach the function to the scroll event
-  window.addEventListener('scroll', highlightOnScroll);
-  
-  // Run the function on page load in case any elements are in view initially
-  window.addEventListener('load', highlightOnScroll);
-  
+}
+
+// Attach the function to the scroll event
+window.addEventListener('scroll', highlightOnScroll);
+
