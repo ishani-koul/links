@@ -31,14 +31,14 @@ let renderBlock = (block) => {
 	// Links!
 	if (block.class == 'Link') {
 		let linkItem = `
-			<div>
+			<li>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
 				<p><a href="${ block.source.url }" target="_blank">Read More ↗</a></p>
-			</div>
+			</li>
 		`;
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem);
 	}
@@ -47,9 +47,9 @@ let renderBlock = (block) => {
 	else if (block.class == 'Image') {
 		let imageItem = 
 			`
-				<div>
+				<li>
 					<img src="${ block.image.original.url }" alt="${ block.title }">
-				</div>
+				</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem);
 		// …up to you!
@@ -59,9 +59,9 @@ let renderBlock = (block) => {
 	else if (block.class == 'Text') {
 		let textItem = 
 		`
-			<div>
+			<li>
 				<blockquote>${block.content_html}</blockquote>
-			</div>
+			</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem);
 		// …up to you!
@@ -76,9 +76,9 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<div>
+				<li>
 					<video controls src="${ block.attachment.url }"></video>
-				</div>
+				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
 			// More on video, like the `autoplay` attribute:
@@ -89,10 +89,10 @@ let renderBlock = (block) => {
 		else if (attachment.includes('pdf')) {
 			let pdfItem = 
 		`
-			<div>
+			<li>
 				<a href="${block.attachment.url}" target="_blank">View PDF ↗</a>
 				<embed src="${block.attachment.url}" type="application/pdf" width="100%" height="500px">
-			</div>
+			</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
 			// …up to you!
@@ -102,9 +102,9 @@ let renderBlock = (block) => {
 		else if (attachment.includes('audio')) {
 			let audioItem =
 				`
-				<div>
+				<li>
 					<video controls src="${ block.attachment.url }"></video> 
-				</div>
+				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
 			// Ask why video works and not audio tag here
@@ -120,9 +120,9 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<div class="linked-video">
+				<li class="linked-video">
 					${ block.embed.html }
-				</div>
+				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -132,9 +132,9 @@ let renderBlock = (block) => {
 		else if (embed.includes('rich')) {
 			let linkedAudioItem =
 			`
-			<div class="linked-audio">
+			<li class="linked-audio">
 				${ block.embed.html }
-			</div>
+			</li>
 			`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem);
 			// …up to you!
@@ -168,4 +168,37 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		let channelUsers = document.getElementById('channel-users');
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers));
 		renderUser(data.user, channelUsers);
-	 });
+	});
+
+// Function to check if an element is in the viewport
+function isInViewport(element) {
+	const rect = element.getBoundingClientRect();
+	return (
+	  rect.top >= 0 &&
+	  rect.left >= 0 &&
+	  rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+	  rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
+  }
+  
+  // Function to highlight elements on scroll and hide those outside the viewport
+  function highlightOnScroll() {
+	// Get all list items (or the elements you want to highlight)
+	const items = document.querySelectorAll('li');
+	
+	// Loop through each item and check if it's in the viewport
+	items.forEach(item => {
+	  if (isInViewport(item)) {
+		item.classList.add('highlight'); // Show the item
+	  } else {
+		item.classList.remove('highlight'); // Hide the item
+	  }
+	});
+  }
+  
+  // Attach the function to the scroll event
+  window.addEventListener('scroll', highlightOnScroll);
+  
+  // Run the function on page load in case any elements are in view initially
+  window.addEventListener('load', highlightOnScroll);
+  
