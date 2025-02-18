@@ -31,18 +31,10 @@ body {
 	background-color: var(--bg-color);
 }
 
-/* header {
-	margin-left: 1.5rem;
-	margin-right: 1.5rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 100vh; 
-} */
-
 header {
 	justify-content: space-between;
 	align-items: center;
+	display: flex;
 	/* height: 100vh;  */
 }
 
@@ -119,20 +111,27 @@ h2 {
 }
 
 .gallery {
-	margin-top: 10rem;
+	display: grid;
+	margin-top: 50rem;
+	justify-content: center;
 }
 
 ul {
 	display: grid;
-	grid-template-columns: 1fr ;
-	row-gap: 8rem;
-	column-gap: 10rem;
-	padding-top: 10rem;
+	grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));
+	gap: 8rem;
+	justify-content: center;
+	align-items: center;
 }
 
 li {
-	width: 100%;
+	width: 312px;
+	/* height: 312px; */
+	overflow: hidden;
+	display: flex;
+	align-items: center;
 	justify-content: center;
+	object-fit: fill;
 }
 
 li {
@@ -140,12 +139,12 @@ li {
 	filter: grayscale(100%);
 	filter: blur(100);
 	transition: opacity 1s ease-in-out; /* Transition everything. */
-	/* will-change: transform; */
 }
 
 li.highlight {
 	opacity: 1;
 	filter: grayscale(0%);
+	/* scale: 1.1; */
 }
 
 /* Add blockquote designs */
@@ -164,6 +163,7 @@ blockquote {
 	font-size: 0.8rem;
 }
 
+/* complete footer later */
 footer {
 	display: flex;
 	gap: 3rem;
@@ -171,3 +171,106 @@ footer {
 	margin-bottom: 1rem;
 }
 
+
+@media (min-width: 820px) {
+
+body {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	align-items: left;
+	height: 100%;
+}
+
+h1 {
+	font-size: 4rem;
+	margin-top: 3rem;
+	text-align: left;
+}
+
+h2 {
+	font-size: 1.1rem;
+	margin-bottom: 6rem;
+	padding-left: 0.2rem;
+	text-align: left;
+}
+
+.left-side {
+	width: 35vw;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+	text-align: left;
+}
+
+.content {
+	text-align: left;
+}
+
+.right-side {
+	width: 65vw;
+	position: relative;
+	overflow: hidden; 
+}
+
+.video {
+	display: block;
+	height: 100%;
+	object-fit:contain;
+	top: 0;
+	position: relative; 
+  }
+
+.descriptions {
+	margin-top: 8rem;
+	font-size: 1rem;
+	line-height: 1.3rem;
+	text-align: left;
+} 
+
+.description1 {
+	max-width: 20rem;
+	font-size: 1.1rem;
+}
+
+.description2 {
+	margin-top: 0.6rem;
+	font-variation-settings: "wght" 100;
+	max-width: 15rem;
+	font-size: 1rem;
+	line-height: 1.6rem;
+} 
+
+.gallery {
+	margin-top: 20rem;
+}
+
+
+ul {
+	gap: 10rem;
+}
+
+li {
+	width: 420px;
+}
+
+li {
+	opacity: 20%;
+	filter: grayscale(100%);
+	filter: blur(100);
+	transition: opacity 1s ease-in-out; /* Transition everything. */
+}
+
+li.highlight {
+	opacity: 1;
+	filter: grayscale(0%);
+	/* transform: scale(1.1); */
+}
+
+
+}
