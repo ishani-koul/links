@@ -112,7 +112,7 @@ h2 {
 
 .gallery {
 	display: grid;
-	margin-top: 50rem;
+	margin-top: 60rem;
 	justify-content: center;
 }
 
@@ -190,13 +190,13 @@ header {
 
 h1 {
 	font-size: 2rem;
-	margin-top: 3rem;
+	margin-top: 10rem;
 	text-align: left;
 }
 
 h2 {
 	font-size: 1.1rem;
-	margin-bottom: 4rem;
+	margin-bottom: 2rem;
 	padding-left: 0.2rem;
 	text-align: left;
 }
@@ -230,7 +230,7 @@ h2 {
   }
 
 .descriptions {
-	margin-top: 6rem;
+	margin-top: 2rem;
 	font-size: 1rem;
 	line-height: 1.3rem;
 	text-align: left;
@@ -250,7 +250,7 @@ h2 {
 } 
 
 .gallery {
-	margin-top: 20rem;
+	margin-top: 10rem;
 }
 
 
@@ -274,6 +274,29 @@ li.highlight {
 	filter: grayscale(0%);
 	/* transform: scale(1.1); */
 }
+
+}
+
+@media (min-width: 900px) {
+
+	
+	h1 {
+		font-size: 4rem;
+		margin-top: 8rem;
+		text-align: left;
+	}
+
+	
+	.description1 {
+		max-width: 24rem;
+		font-size: 1.1rem;
+	}
+	
+	.description2 {
+		margin-top: 0.6rem;
+		font-variation-settings: "wght" 100;
+		max-width: 17rem;
+	} 
 
 
 }
