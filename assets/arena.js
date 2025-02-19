@@ -200,3 +200,39 @@ function highlightOnScroll() {
 // Attach the function to the scroll event
 window.addEventListener('scroll', highlightOnScroll);
 
+// Get the filter button
+const filterButton = document.getElementById("filter-button");
+const filterPanel = document.getElementById("filter-panel");
+
+// Get all filter options
+const filterOptions = document.querySelectorAll(".filter-option");
+
+// Get the channel blocks
+const channelBlocks = document.getElementById("channel-blocks");
+
+// Toggle
+filterButton.addEventListener("click", () => {
+    filterPanel.classList.toggle("show");
+});
+
+// Add event listeners to each filter option
+filterOptions.forEach(option => {
+	option.addEventListener("click", () => {
+		const filterType = option.getAttribute("data-type");
+		channelBlocks.classList.remove("video", "image", "text", "audio"); //Try show-hide
+
+		if (filterType === "image") {
+			channelBlocks.classList.add("image");
+		} else if (filterType === "video") {
+			channelBlocks.classList.add("video");
+		} else if (filterType === "text") {
+			channelBlocks.classList.add("text");
+		} else if (filterType === "audio") {
+			channelBlocks.classList.add("audio");
+		}
+
+		filterPanel.classList.remove("show");
+	});
+});
+
+
