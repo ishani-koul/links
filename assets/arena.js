@@ -32,13 +32,17 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem = `
 			<li class="link-block">
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-				</picture>
-				<p><a href="${ block.source.url }" target="_blank">
-				<img src="${ block.image.original.url }">
-				</a></p>
+				<div class="media-container">
+					<picture>
+						<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+						<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+					</picture>
+					<p>
+						<a href="${ block.source.url }" target="_blank">
+						<img src="${ block.image.original.url }">
+					</a></p>
+					<div class="media-title">${block.title}</div>
+				</div>
 			</li>
 		`;
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem);
@@ -49,7 +53,10 @@ let renderBlock = (block) => {
 		let imageItem = 
 			`
 				<li class="image-block">
+				<div class="media-container">
 					<img src="${ block.image.original.url }" alt="${ block.title }">
+				<div class="media-title">${block.title}</div>
+				</div>
 				</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem);
@@ -158,33 +165,6 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 
-
-
-
-
-//check with links
-let initInteraction = () => {
-	// add block here or just ('li') to target all blocks
-	let blocks = document.querySelectorAll('.image-block, .link-block, .text-block, .linked-audio-block, .audio-block, .video-block')
-	blocks.forEach((block) => {
-		let openButton = block.querySelector('button')
-		let dialog = block.querySelector('dialog')
-		let closeButton = dialog.querySelector('button')
-		
-		openButton.onclick = () => {
-			dialog.showModal()
-		}
-
-		closeButton.onclick = () => {
-			dialog.close()
-		}
-
-		dialog.onclick = (event) => { // Listen on our `modal` also…
-			if (event.target == dialog) { // Only if clicks are to itself (the background).
-				dialog.close() // Close it then too.
-			}}
-	})
-}
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
