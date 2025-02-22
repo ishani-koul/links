@@ -31,13 +31,14 @@ let renderBlock = (block) => {
 	// Links!
 	if (block.class == 'Link') {
 		let linkItem = `
-			<li>
+			<li class="link-block">
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
 				</picture>
-				<p><a href="${ block.source.url }" target="_blank">Read More ↗</a></p>
+				<p><a href="${ block.source.url }" target="_blank">
+				<img src="${ block.image.original.url }">
+				</a></p>
 			</li>
 		`;
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem);
@@ -47,7 +48,7 @@ let renderBlock = (block) => {
 	else if (block.class == 'Image') {
 		let imageItem = 
 			`
-				<li>
+				<li class="image-block">
 					<img src="${ block.image.original.url }" alt="${ block.title }">
 				</li>
 			`
@@ -59,7 +60,7 @@ let renderBlock = (block) => {
 	else if (block.class == 'Text') {
 		let textItem = 
 		`
-			<li>
+			<li class="text-block">
 				<blockquote>${block.content_html}</blockquote>
 			</li>
 		`
@@ -76,7 +77,7 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<li class="video-block ">
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
 				`
@@ -89,9 +90,10 @@ let renderBlock = (block) => {
 		else if (attachment.includes('pdf')) {
 			let pdfItem = 
 		`
-			<li>
-				<a href="${block.attachment.url}" target="_blank">View PDF ↗</a>
+			<li class="text-block">
+				<a href="${block.attachment.url}" target="_blank">
 				<embed src="${block.attachment.url}" type="application/pdf" width="100%" height="500px">
+				</a>
 			</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
@@ -102,8 +104,8 @@ let renderBlock = (block) => {
 		else if (attachment.includes('audio')) {
 			let audioItem =
 				`
-				<li>
-					<video controls src="${ block.attachment.url }"></video> 
+				<li class="audio-block">
+					<audio controls src="${ block.attachment.url }"></video> 
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -120,7 +122,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li class="linked-video">
+				<li class="video-block">
 					${ block.embed.html }
 				</li>
 				`
@@ -132,7 +134,7 @@ let renderBlock = (block) => {
 		else if (embed.includes('rich')) {
 			let linkedAudioItem =
 			`
-			<li class="linked-audio">
+			<li class="audio-block">
 				${ block.embed.html }
 			</li>
 			`
@@ -155,6 +157,34 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
+
+
+
+
+
+//check with links
+let initInteraction = () => {
+	// add block here or just ('li') to target all blocks
+	let blocks = document.querySelectorAll('.image-block, .link-block, .text-block, .linked-audio-block, .audio-block, .video-block')
+	blocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+		
+		openButton.onclick = () => {
+			dialog.showModal()
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => { // Listen on our `modal` also…
+			if (event.target == dialog) { // Only if clicks are to itself (the background).
+				dialog.close() // Close it then too.
+			}}
+	})
+}
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
@@ -200,39 +230,30 @@ function highlightOnScroll() {
 // Attach the function to the scroll event
 window.addEventListener('scroll', highlightOnScroll);
 
-// Get the filter button
-const filterButton = document.getElementById("filter-button");
-const filterPanel = document.getElementById("filter-panel");
 
-// Get all filter options
-const filterOptions = document.querySelectorAll(".filter-option");
 
-// Get the channel blocks
-const channelBlocks = document.getElementById("channel-blocks");
 
-// Toggle
-filterButton.addEventListener("click", () => {
-    filterPanel.classList.toggle("show");
+//Filter 
+let channelBlocks = document.getElementById('channel-blocks');
+let selectElement = document.querySelector('.filters');
+
+selectElement.addEventListener('change', (event) => {
+	let selectedValue = event.target.value;
+	channelBlocks.classList.remove('show-video', 'show-image', 'show-text', 'show-audio', 'show-linked-audio', 'show-link');
+
+	if (selectedValue === 'show-video-button')
+	{channelBlocks.classList.add('show-video');}
+	else if (selectedValue === 'show-image-button')
+
+	{channelBlocks.classList.add('show-image');}
+	else if (selectedValue === 'show-text-button')
+	
+	// gathered blocks that include text
+	{channelBlocks.classList.add('show-text', 'show-link');}
+	else if (selectedValue === 'show-audio-button')
+
+	// gathered all audio blocks
+	{channelBlocks.classList.add('show-audio', 'show-linked-audio');
+}
+
 });
-
-// Add event listeners to each filter option
-filterOptions.forEach(option => {
-	option.addEventListener("click", () => {
-		const filterType = option.getAttribute("data-type");
-		channelBlocks.classList.remove("video", "image", "text", "audio"); //Try show-hide
-
-		if (filterType === "image") {
-			channelBlocks.classList.add("image");
-		} else if (filterType === "video") {
-			channelBlocks.classList.add("video");
-		} else if (filterType === "text") {
-			channelBlocks.classList.add("text");
-		} else if (filterType === "audio") {
-			channelBlocks.classList.add("audio");
-		}
-
-		filterPanel.classList.remove("show");
-	});
-});
-
-

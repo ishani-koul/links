@@ -32,6 +32,8 @@ body {
 	cursor: url('circle.svg'), auto; 
 }
 
+
+/* Title + Video */ 
 header {
 	justify-content: center;
 	align-items: center;
@@ -68,12 +70,15 @@ h2 {
 	padding-left: 0.8rem;
 }
 
+/* Horizontal Line */
 .line {
 	width: 3rem;
 	height: 0.1rem; 
 	background-color: var(--text-color);
 }
 
+
+/* Definition */
 .descriptions {
 	margin-top: 6rem;
 	font-family: var(--font-family);
@@ -96,6 +101,7 @@ h2 {
 	line-height: 1.6rem;
 } 
 
+/* Video */
 .right-side {
 	height: 100%;
 }
@@ -110,71 +116,69 @@ h2 {
 	position: absolute;
 }
 
+
 /* Filter Button */
-#filter-button {
-	position: fixed;
-	bottom: 1rem;
-	right: 1rem;
-	background: var(--accent-color2);
-	border: none;
-	padding: 1rem 1rem;
-	border-radius: 50px;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
-	z-index: 1000;
+label {
+	font-size: var(--base-size);
+	font-family: var(--font-body);
+	color: var(--color--re-shadow);
+	font-weight: 500;
 }
 
-#filter-button:hover {
-	background: var(--accent-color1);
-}
-
-#filter-button img {
-	width: 1.3rem;
-	height: 1.3rem;
-}
-
-/* Filter Panel */
-#filter-panel {
-	position: fixed;
-	bottom: 5rem;
-	right: 1rem;
+.filters-label {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	opacity: 0;
-	transform: translateY(10px);
-	transition: all 0.3s ease-in-out;
-	z-index: 1000; 
-	/* could be 999 */
+	font-size: var(--base-size);
+	font-family: var(--font-body);
+	font-weight: 500;
 }
 
-#filter-panel.show {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* Filter Media Buttons */
-.filter-option {
-	font-family: var(--font-family);
-	font-variation-settings: "wght" 300;
-	background: var(--accent-color2);
-	color: var(--text-color);
-	padding: 0.8rem 0.6rem;
-	border-radius: 8px;
-	font-size: 0.9rem;
-	display: flex;
-	align-items: center;
-	gap: 10px;
+.filters {
+	width: 100%;
+	max-width: 150px;
+	margin: 5px;
+	border-radius: 4px;
+	display: inline-block;
+	border: 1.5px solid var(--color--re-shadow);
+	color: var(--color--re-shadow);
+	padding: 5px 15px;
+	border-radius: 5px;
+	font-weight: 500;
 	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-size: var(--base-size);
+	font-family: var(--font-body);
 }
 
-.filter-option:hover {
-	transform: scale(1.1);
-	background: var(--accent-color1);
+.filters:focus {
+	outline: none;
+	border-color: var(--color--re-shadow);
+	color: var(--color--re-shadow);
 }
 
+.show-video li, .show-image li, .show-text li, .show-audio li, .show-linked-audio li, .show-link li {
+	display: none;
+}
+
+.show-video li.video-block, .show-image li.image-block, .show-text li.text-block, .show-audio li.audio-block, .show-linked-audio li.linked-audio-block, .show-link li.link-block {
+	display: flex;
+}
+
+
+/* Background */
+body::before {
+	content: "";
+	position: absolute;
+	top: 90rem;
+	left: 10rem;
+	width: 100%;
+	height: 100%;
+	background: url('Treering.svg') no-repeat center center;
+	background-size:auto;
+	opacity: 0.2; /* Only affects the SVG */
+	z-index: -1; /* Places it behind other content */
+}
+
+/* Media */
 .gallery {
 	display: grid;
 	margin-top: 60rem;
@@ -184,14 +188,13 @@ h2 {
 ul {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));
-	gap: 8rem;
+	gap: 10rem;
 	justify-content: center;
 	align-items: center;
 }
 
 li {
 	width: 312px;
-	/* height: 312px; */
 	overflow: hidden;
 	display: flex;
 	align-items: center;
@@ -209,19 +212,51 @@ li {
 li.highlight {
 	opacity: 1;
 	filter: grayscale(0%);
-	/* scale: 1.1; */
 }
 
-/* Add blockquote designs */
+
+/* Text Style */
 blockquote {
+	max-width: 312px;
 	font-family: var(--font-family);
 	font-variation-settings: "wght" 100;
-	font-size: 1.2rem;
-	line-height: 1.6rem;
-	border-left: 3px solid #AEBA75;
-	padding-left: 0.5rem;
+	font-size: 1.5rem;
+	line-height: 2.2rem;
+	background-color: rgb(174, 186, 117, 0.6);
+	padding-top: 2rem;
+	padding-bottom: 6rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	/* border-left: 3px solid #AEBA75;
+	padding-left: 0.5rem; */
 }
 
+/* Uploaded Audio Style */
+audio {
+	background-color: rgb(174, 186, 117, 0.4);
+	filter: inherit;
+	width: 320px;
+	height: 320px;
+	object-fit: cover;
+	padding-top: 2rem;
+	padding-bottom: 6rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+
+/* Linked Audio + Video Style */
+iframe {
+	background-color: rgb(174, 186, 117, 0.4);
+	padding-top: 2rem;
+	padding-bottom: 6rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	width: 320px;
+}
+
+
+/* Footer */
 #channel-users {
 	display: flex;
 	gap: 3rem;
@@ -229,12 +264,7 @@ blockquote {
 }
 
 /* complete footer later */
-footer {
-	display: flex;
-	gap: 3rem;
-	/* gap: 20rem; */
-	margin-bottom: 1rem;
-}
+
 
 
 @media (min-width: 820px) {
@@ -337,6 +367,7 @@ li.highlight {
 	filter: grayscale(0%);
 	/* transform: scale(1.1); */
 }
+
 
 }
 

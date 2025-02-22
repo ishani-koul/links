@@ -1,4 +1,4 @@
-<html lang="en">
+<!DOCTYPE html>
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -58,24 +58,16 @@
 			</section>
 		</header>
 		<main>
-			<button id="filter-button">
-				<img src="assets/Filter.svg" width="28" height="28" alt="Filter Icon">
-			  </button>
-
-			<div id="filter-panel">
-				<div class="filter-option" data-type="image">
-					Images
-				</div>
-				<div class="filter-option" data-type="video">
-					Videos
-				</div>
-				<div class="filter-option" data-type="text">
-					Text
-				</div>
-				<div class="filter-option" data-type="audio">
-					Audio
-				</div>
-			</div>
+			<label>
+				Filter
+				<select class="filters" name="filters">
+					<option value="show-all-button">All</option>
+					<option value="show-video-button">Video</option>
+					<option value="show-image-button">Image</option>
+					<option value="show-text-button">Text</option>
+					<option value="show-audio-button">Audio</option>
+				</select>
+			</label>
 			<div class="gallery">
 				<ul id="channel-blocks"></ul>
 			</div>
@@ -83,11 +75,10 @@
 				<div class="gallery" id="channel-blocks"></div>
 			</section> -->
 		</main>
-		<!-- <footer>
+		<footer>
+			<p> Curated by </p>
 			<div id="channel-users"></div> 
 			<address> Typography & Interaction 2</address>
-			 <p> Curated by Vee  and Ishani Koul</p>
-			<p> Designed & Developed by Ishani Koul</p>
-		</footer> -->
+		</footer> 
 	</body>
 </html>
