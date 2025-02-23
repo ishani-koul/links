@@ -1,0 +1,82 @@
+header {
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.left-side {
+	text-align: center;
+	display: grid;
+	justify-items: center;
+	height: 100%;
+}
+
+.content {
+	text-align: center;
+}
+
+h1 {
+	font-family: var(--secfont-family);
+	font-weight: var(--secfont-weight);
+	font-size: 5rem;
+	color: var(--text-color);
+	margin-bottom: 1rem;
+	margin-top: 3rem;
+}
+
+h2 {
+	font-family: var(--font-family);
+	font-variation-settings: "wght" 200 ;
+	font-size: 1.4rem;
+	letter-spacing: 0.8rem;
+	color: var(--text-color);
+	margin-bottom: 5rem;
+	padding-left: 0.8rem;
+}
+
+/* Horizontal Line */
+.line {
+	width: 3rem;
+	height: 0.1rem; 
+	background-color: var(--text-color);
+}
+
+
+/* Definition */
+.descriptions {
+	margin-top: 6rem;
+	font-family: var(--font-family);
+	font-variation-settings: "wght" 300;
+	color: var(--text-color);
+	font-size: 1.2rem;
+	line-height: 1.4rem;
+} 
+
+.description1 {
+	max-width: 20rem;
+	font-size: 1.1rem;
+}
+
+.description2 {
+	margin-top: 0.6rem;
+	font-variation-settings: "wght" 100;
+	max-width: 20rem;
+	font-size: 1rem;
+	line-height: 1.6rem;
+} 
+
+/* Video */
+.right-side {
+	height: 100%;
+}
+
+.video {
+	border-radius: 2rem;
+	display: block;
+	height: 100vh;
+	width: 100vw;
+	top: 100vh;
+	object-fit:cover;
+	left: 0;
+	position: absolute;
+}
