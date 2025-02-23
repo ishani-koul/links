@@ -68,7 +68,10 @@ let renderBlock = (block) => {
 		let textItem = 
 		`
 			<li class="text-block">
-				<blockquote>${block.content_html}</blockquote>
+				<div class="media-container">
+					<blockquote>${block.content_html}</blockquote>
+				<div class="media-title">${block.title}</div>
+				</div>
 			</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem);
@@ -85,7 +88,10 @@ let renderBlock = (block) => {
 			let videoItem =
 				`
 				<li class="video-block ">
-					<video controls src="${ block.attachment.url }"></video>
+					<div class="media-container">
+						<video controls src="${ block.attachment.url }"></video>
+					<div class="media-title">${block.title}</div>
+					</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
@@ -98,9 +104,12 @@ let renderBlock = (block) => {
 			let pdfItem = 
 		`
 			<li class="text-block">
-				<a href="${block.attachment.url}" target="_blank">
-				<embed src="${block.attachment.url}" type="application/pdf" width="100%" height="500px">
-				</a>
+				<div class="media-container">
+					<a href="${block.attachment.url}" target="_blank">
+						<embed src="${block.attachment.url}" type="application/pdf" width="100%" height="500px">
+					</a>
+					<div class="media-title">${block.title}</div>
+				</div>
 			</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
@@ -112,7 +121,10 @@ let renderBlock = (block) => {
 			let audioItem =
 				`
 				<li class="audio-block">
+				<div class="media-container">
 					<audio controls src="${ block.attachment.url }"></video> 
+					<div class="media-title">${block.title}</div>
+				</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -130,7 +142,10 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li class="video-block">
+				<div class="media-container">
 					${ block.embed.html }
+					<div class="media-title">${block.title}</div>
+				</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
@@ -142,7 +157,10 @@ let renderBlock = (block) => {
 			let linkedAudioItem =
 			`
 			<li class="audio-block">
+				<div class="media-container">
 				${ block.embed.html }
+				<div class="media-title">${block.title}</div>
+				</div>
 			</li>
 			`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem);
@@ -237,3 +255,24 @@ selectElement.addEventListener('change', (event) => {
 }
 
 });
+
+
+
+
+// Video Scroll Try
+// document.addEventListener("scroll", function () {
+// 	let scrollPosition = window.scrollY;
+// 	let videoContainer = document.getElementById("videoContainer");
+
+// 	// Define when the expansion should start
+// 	if (scrollPosition > 100) { 
+// 		videoContainer.style.width = "100%";
+// 		videoContainer.style.position = "fixed";
+// 		videoContainer.style.top = "0";
+// 		videoContainer.style.left = "0";
+// 		videoContainer.style.zIndex = "10";
+// 	} else {
+// 		videoContainer.style.width = "50%";
+// 		videoContainer.style.position = "relative";
+// 	}
+// });
