@@ -10,6 +10,8 @@
 	--secfont-weight: 400;
 	--accent-color1: #AEBA75;
 	--accent-color2: #DDD1AC;
+	--block-bg: #c3b7a867;
+	--container-margin: #e6e3df;
 }
 
 * {
@@ -27,7 +29,7 @@ body {
 	margin-left: 0rem;
 	margin-right: 2rem;
 	font-family: var(--font-family);
-	/* background-color: var(--bg-color); */
+	background-color: var(--bg-color);
 	background-color: var(--bg-color);
 	cursor: url('enso.svg'), auto; 
 }
@@ -36,15 +38,15 @@ body {
 /* Bg change on scroll - learnt from https://codepen.io/uiduck/pen/vYobamq and executed it. I've added comments based on how I understood this code to work */
 @keyframes colorShift {
 	0% {
-		background-color:  #FFFFFF; /*Gradient 1*/
+		background-color: #ffffff; /*Gradient 1*/
 	}
 	50% {
-		background-color: #c9dcad; /* Gradient 2 */
+		background-color: #B9BCA6; /* Gradient 2 */
 	}
 	100% {
-		background-color: #7A8B3E ; /* Gradient 3 */
+		background-color: #95A381 ; /* Gradient 3 */
 	}
-}
+} 
 
 @media (prefers-reduced-motion: no-preference) { /*This animation won't work if user has enabled accessibility features with preference: reduced-motion */
 	@supports (animation-timeline: scroll()) {
@@ -201,7 +203,7 @@ ul {
 
 li {
 	width: 312px;
-	max-height: 600px;
+	max-height: 650px;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
@@ -226,7 +228,7 @@ li.highlight {
 /* Use this on hover for desktop query */
 .media-container {
 	position: relative;
-	border: 2px solid #AEBA75; 
+	border: 4px solid var(--container-margin);
 	border-radius: 2px; 
 	width: 312px;
 
@@ -235,17 +237,13 @@ li.highlight {
 .media-title {
 	font-size: 1rem;
 	font-variation-settings: "wght" 300;
-	color: var(--bg-color);
-	background-color: rgb(174, 186, 117, 1);
+	color: #555555;
+	background-color: var(--container-margin);
 	margin-top: -0.3rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	text-align: center;
 }
-
-/* .media-container:hover .media-title {
-	opacity: 1;
-}  */
 
 /* Text Style */
 blockquote {
@@ -254,7 +252,7 @@ blockquote {
 	font-variation-settings: "wght" 100;
 	font-size: 1.5rem;
 	line-height: 2.2rem;
-	background-color: rgb(174, 186, 117, 0.6);
+	background-color: var(--block-bg);
 	padding-top: 2rem;
 	padding-bottom: 6rem;
 	padding-left: 1.5rem;
@@ -264,7 +262,7 @@ blockquote {
 
 /* Uploaded Audio Style */
 audio {
-	background-color: rgb(174, 186, 117, 0.3);
+	background-color: var(--block-bg);
 	filter: inherit;
 	width: 300px;
 	height: 310px;
@@ -282,19 +280,19 @@ li .video-block {
 }
 
 .uploaded-video {
-	width: 308px;
+	width: 304px;
 	height: 200px;
 }
 
 
 /* Linked Audio + Video Style */
 iframe {
-	background-color: rgb(174, 186, 117, 0.3);
+	background-color: var(--block-bg);
 	padding-top: 2rem;
 	padding-bottom: 6rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	width: 308px;
+	width: 304px;
 }
 
 
@@ -343,7 +341,6 @@ address {
 	flex-direction: row;
 }
 
-/* complete footer later */
 
 @media (min-width: 420px){
 
@@ -356,3 +353,321 @@ address {
 	}
 }
 
+@media (min-width: 700px) {
+
+
+	.descriptions {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
+
+	.description2 {
+		max-width: 29rem;
+	}
+
+	ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+		gap: 15rem;
+		justify-content: center;
+		align-items: center;
+	}
+
+	li {
+		width: 340px;
+		max-height: 640px;
+	}
+
+	.media-container {
+		width: 340px;
+		border: 4px solid var(--container-margin);
+	} 
+
+	.media-title {
+		font-size: 1rem;
+		font-variation-settings: "wght" 300;
+		color: #555555;
+		background-color: var(--container-margin);
+		margin-top: -0.3rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		text-align: center;
+	}
+
+	blockquote {
+		max-width: 340px;
+	}
+	
+	
+	/* Uploaded Audio Style */
+	audio {
+		width: 340px;
+	}
+	
+	li .video-block {
+		width: 340px;
+		max-height: 300px;
+	}
+	
+	.uploaded-video {
+		width: 340px;
+		height: 300px;
+	}
+	
+	
+	/* Linked Audio + Video Style */
+	iframe {
+		width: 336px;
+	}
+
+}
+
+@media (min-width: 800px) {
+
+	.descriptions {
+		padding-top: 8rem;
+		padding-bottom: 8rem;
+	}
+
+	.description2 {
+		max-width: 32rem;
+	}
+
+	ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+		gap: 15rem;
+		justify-content: center;
+		align-items: center;
+	}
+
+	li {
+		width: 360px;
+		max-height: 670px;
+	}
+
+	.media-container {
+		width: 360px;
+	} 
+
+	.media-title {
+		font-size: 1rem;
+		font-variation-settings: "wght" 300;
+		color: #555555;
+		background-color: var(--container-margin);
+		margin-top: -0.3rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		text-align: center;
+	}
+
+	blockquote {
+		max-width: 360px;
+	}
+	
+	
+	/* Uploaded Audio Style */
+	audio {
+		width: 360px;
+	}
+	
+	li .video-block {
+		width: 360px;
+		max-height: 340px;
+	}
+	
+	.uploaded-video {
+		width: 352px;
+		height: 330px;
+	}
+	
+	
+	/* Linked Audio + Video Style */
+	iframe {
+		width: 352px;
+	}
+
+}
+
+@media (min-width: 1200px) {
+
+	h1 {
+		font-size: 8rem;
+		padding-top: 19rem;
+	}
+	
+	h2 {
+		font-size: 1.6rem;
+		letter-spacing: 1.2rem;
+		padding-top: 2rem;
+		padding-left: 1.6rem;
+	}
+	
+	.descriptions {
+		margin-top: 7rem;
+		padding-top: 7.5rem;
+		padding-bottom: 7.5rem;
+	}
+	
+	.description1 {
+		font-size: 2rem;
+		margin-bottom: 1.2rem;
+	}
+	
+	.description2 {
+		font-size: 1.6rem;
+		line-height: 1.8;
+		max-width: 50rem;
+	}
+	
+	/* Filter Button */
+	/* Positioning the label in the bottom right */
+	label {
+		position: fixed;
+		bottom: 40px;
+		right: 10px;
+		border-radius: 2px;
+		color: #3b3b3b77;
+		text-align: center;
+		display: flex;
+		text-decoration: underline; 
+		text-underline-offset: 2px;
+	}
+	
+	select {
+		appearance: none; /* Removes default browser styles */
+		outline: none;
+	}
+	
+	/* Style the select dropdown */
+	.filters {
+		font-size: 1rem;
+		font-variation-settings: "wght" 300;
+		padding: 8px 8px;
+		border-radius: 2px;
+		cursor: pointer;
+	}
+	
+	.show-video li, .show-image li, .show-text li, .show-audio li, .show-linked-audio li, .show-link li {
+		display: none;
+	}
+	
+	.show-video li.video-block, .show-image li.image-block, .show-text li.text-block, .show-audio li.audio-block, .show-linked-audio li.linked-audio-block, .show-link li.link-block {
+		display: flex;
+	}
+	
+	ul {
+		grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
+	}
+	
+	li {
+		width: 356px;
+		max-height: 760px;
+	}
+	
+	
+	/* Title of media */
+	.media-container {
+		width: 356px;
+		border: 2px solid transparent;
+		border-radius: 2px; 
+	} 
+	
+	.media-title {
+		font-size: 1rem;
+		opacity: 0;
+		will-change: transform, opacity;
+		transition: opacity 0.2s ease-in-out;
+		text-align: center;
+	}
+
+	.media-container:hover {
+		border: 4px solid var(--container-margin); /* Show border on hover */
+	}
+	
+	.media-container:hover .media-title {
+		opacity: 1;
+	}
+	
+	
+	/* Text Style */
+	blockquote {
+		max-width: 356px;
+		font-family: var(--font-family);
+		font-variation-settings: "wght" 100;
+		font-size: 1.5rem;
+		line-height: 2.2rem;
+		background-color: var(--block-bg);
+		padding-top: 3rem;
+		padding-bottom: 8rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+	
+	
+	/* Uploaded Audio Style */
+	audio {
+		width: 356px;
+		height: 320px;
+		object-fit: cover;
+		padding-top: 2rem;
+		padding-bottom: 6rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+	
+	li .video-block {
+		width: 356px;
+		max-height: 320px;
+		object-fit:contain
+	}
+	
+	.uploaded-video {
+		width: 348px;
+		height: 320px;
+	}
+	
+	
+	/* Linked Audio + Video Style */
+	iframe {
+		background-color: var(--block-bg);
+		padding-top: 2rem;
+		padding-bottom: 6rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		width: 348px;
+		height: 320px;
+	}
+
+	.text-footer {
+		margin-top: 2rem;
+		font-size: 1.4rem;
+		font-variation-settings: "wght" 300;
+	}
+
+	.names {
+		display: flex;
+		flex-direction: row;
+		font-family: var(--font-family);
+		font-variation-settings: "wght" 300;
+		gap: 0.4rem;
+		margin-bottom: 1rem;
+		font-size: 1.2rem;
+	}
+
+	#channel-users {
+		display: flex;
+		flex-direction: row;
+		font-family: var(--font-family);
+		font-variation-settings: "wght" 400;
+		gap: 0.5rem;
+		text-decoration: underline;
+	}
+
+	address {
+		display: flex;
+		flex-direction: row;
+	}
+
+
+}
