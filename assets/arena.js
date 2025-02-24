@@ -87,9 +87,9 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li class="video-block class="upload-video">
+				<li class="video-block">
 					<div class="media-container">
-						<video controls src="${ block.attachment.url }"></video>
+						<video controls src="${ block.attachment.url}" autoplay loop muted class="uploaded-video"></video>
 					<div class="media-title">${block.title}</div>
 					</div>
 				</li>

@@ -243,10 +243,9 @@ li.highlight {
 /* Use this on hover for desktop query */
 .media-container {
 	position: relative;
-	display: inline-block;
-	/* border: 2px solid #AEBA75;  */
 	border: 2px solid #AEBA75; 
 	border-radius: 2px; 
+	width: 312px;
 } 
 
 .media-title {
@@ -292,10 +291,15 @@ audio {
 	padding-right: 1.5rem;
 }
 
-.upload-video {
+li .video-block {
 	width: 312px;
-	max-height: 400px;
-	object-fit: cover;
+	max-height: 240px;
+	object-fit:contain
+}
+
+.uploaded-video {
+	width: 308px;
+	height: 200px;
 }
 
 
