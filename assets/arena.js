@@ -174,9 +174,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	let userAddress =
 		`
 		<address>
-			<img src="${ user.avatar_image.display }">
-			<h3>${ user.first_name }</h3>
-			<p><a href="https://are.na/${ user.slug }">Are.na profile ↗</a></p>
+			<p><a href="https://are.na/${ user.slug }"><h3>${ user.first_name }</h3></a></p>
 		</address>
 		`
 	container.insertAdjacentHTML('beforeend', userAddress)

@@ -24,7 +24,6 @@ html {
 
 body {
 	margin-top: 0rem;
-	margin-bottom: 3rem;
 	margin-left: 0rem;
 	margin-right: 2rem;
 	font-family: var(--font-family);
@@ -37,13 +36,13 @@ body {
 /* Bg change on scroll - learnt from https://codepen.io/uiduck/pen/vYobamq and executed it. I've added comments based on how I understood this code to work */
 @keyframes colorShift {
 	0% {
-		background-color:  #F1F0E8; /*Gradient 1*/
+		background-color:  #FFFFFF; /*Gradient 1*/
 	}
 	50% {
-		background-color: #D9D6B8; /* Gradient 2 */
+		background-color: #c9dcad; /* Gradient 2 */
 	}
 	100% {
-		background-color: #cacead; /* Gradient 3 */
+		background-color: #7A8B3E ; /* Gradient 3 */
 	}
 }
 
@@ -117,20 +116,6 @@ h2 {
 	padding-left: 0.8rem;
 }
 
-/* .line {
-	width: 100vw;
-	height: 0.8px;
-	background-color: var(--text-color);
-	margin-top: 8rem;
-}
-
-.line2 {
-	width: 100vw;
-	height: 0.8px;
-	background-color: var(--text-color);
-	margin-top: 3rem;
-} */
-
 .descriptions {
 	letter-spacing: 0.01rem;
 	margin-left: 2rem;
@@ -163,15 +148,13 @@ h2 {
 label {
 	position: fixed;
 	bottom: 40px;
-	right: 20px;
+	right: 10px;
 	border-radius: 2px;
-	color: #3B3B3B;
+	color: #3b3b3b77;
 	text-align: center;
 	display: flex;
-	text-decoration: underline;
-	text-underline-offset: 3px;
-	/* border: 1px solid #3B3B3B; */
-	/* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+	text-decoration: underline; 
+	text-underline-offset: 2px;
 }
 
 select {
@@ -246,6 +229,7 @@ li.highlight {
 	border: 2px solid #AEBA75; 
 	border-radius: 2px; 
 	width: 312px;
+
 } 
 
 .media-title {
@@ -315,258 +299,60 @@ iframe {
 
 
 /* Footer */
+footer {
+	color: var(--bg-color);
+	margin-top: 10rem;
+	margin-bottom: 3rem;
+	margin-left: 2rem;
+}
+
+.line {
+	height: 1px;
+	background-color: var(--bg-color);
+	margin-left: -2rem;
+	margin-right: -2rem;
+}
+
+.text-footer {
+	margin-top: 1rem;
+	font-size: 1rem;
+	font-variation-settings: "wght" 300;
+	margin-bottom: 2rem;
+}
+
+.names {
+	display: flex;
+	flex-direction: row;
+	font-family: var(--font-family);
+	font-variation-settings: "wght" 300;
+	gap: 0.4rem;
+	margin-bottom: 1rem;
+}
+
 #channel-users {
 	display: flex;
-	gap: 3rem;
-	font-size: 0.8rem;
+	flex-direction: row;
+	font-family: var(--font-family);
+	font-variation-settings: "wght" 400;
+	gap: 0.5rem;
+	text-decoration: underline;
+}
+
+address {
+	display: flex;
+	flex-direction: row;
 }
 
 /* complete footer later */
 
+@media (min-width: 420px){
 
-
-@media (min-width: 820px) {
-
-body {
-	margin-top: 3rem;
-	margin-bottom: 3rem;
-}
-
-header {
-	display: flex;
-	flex-direction: row;
-	align-items: left;
-	height: 100%;
-}
-
-h1 {
-	font-size: 3rem;
-	margin-top: 9rem;
-	text-align: left;
-}
-
-h2 {
-	font-size: 1.1rem;
-	margin-bottom: 2rem;
-	padding-left: 0.2rem;
-	text-align: left;
-}
-
-.left-side {
-	width: 35vw;
-	display: flex;
-	flex-direction: column;
-	align-items: left;
-	justify-content: left;
-	text-align: left;
-}
-
-.content {
-	text-align: left;
-}
-
-.right-side {
-	width: 65vw;
-	position: relative;
-	overflow: hidden; 
-}
-
-.video {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit:contain;
-	top: 0;
-	position: relative; 
-  }
-
-.descriptions {
-	margin-top: 2rem;
-	font-size: 0.9rem;
-	line-height: 1.3rem;
-	text-align: left;
-} 
-
-.description1 {
-	max-width: 20rem;
-	font-size: 1rem;
-}
-
-.description2 {
-	margin-top: 0.6rem;
-	font-variation-settings: "wght" 100;
-	max-width: 16rem;
-	font-size: 1rem;
-	line-height: 1.6rem;
-} 
-
-.gallery {
-	margin-top: 10rem;
-}
-
-
-ul {
-	gap: 10rem;
-}
-
-li {
-	width: 420px;
-}
-
-li {
-	opacity: 20%;
-	filter: grayscale(100%);
-	filter: blur(100);
-	transition: opacity 1s ease-in-out; /* Transition everything. */
-}
-
-li.highlight {
-	opacity: 1;
-	filter: grayscale(0%);
-	/* transform: scale(1.1); */
-}
-
-
-}
-
-@media (min-width: 900px) {
-
-	
-	h1 {
-		font-size: 4rem;
-		margin-top: 8rem;
-		text-align: left;
-	}
-
-	
-	.description1 {
-		max-width: 24rem;
-		font-size: 1.1rem;
-	}
-	
 	.description2 {
-		margin-top: 0.6rem;
-		font-variation-settings: "wght" 100;
-		max-width: 17rem;
-	} 
-
-}
-
-@media (min-width: 1000px) {
-
-	
-	h1 {
-		font-size: 4rem;
-		margin-top: 7rem;
-		text-align: left;
-	}
-
-	h2 {
-		margin-bottom: 4rem;
-	}
-
-	.descriptions {
-		margin-top: 4rem;
-	} 
-	
-	.description1 {
-		font-size: 1.1rem;
-	}
-	
-	.description2 {
-		margin-top: 0.6rem;
-		font-variation-settings: "wght" 100;
-		max-width: 21rem;
-	} 
-
-}
-
-@media (min-width: 1200px) {
-
-	/* body {
-		margin: 0;
-		height: 200vh; /* To enable scrolling 
-		background: #f4f4f4;
-	}
-
-	.right-side {
-		position: relative;
-		width: 50%;
-		margin: 50px auto;
-		overflow: hidden;
-		transition: all 1s ease-in-out;
-	}
-
-	.right-side video {
-		width: 100%;
-		display: block;
-		transition: all 1s ease-in-out;
-	}
-
-	/* Full width class 
-	.full-width {
-		width: 100% !important;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 10;
-	} */
-
-	
-	h1 {
-		font-size: 4rem;
-		margin-top: 6rem;
-		text-align: left;
-	}
-
-	h2 {
-		font-size: 1.4rem;
-		margin-bottom: 7rem;
-	}
-
-	.descriptions {
-		margin-top: 7.5rem;
-	} 
-	
-	.description1 {
-		font-size: 1.3rem;
-		margin-bottom: 1.2rem;
-	}
-	
-	.description2 {
+		color: var(--text-color);
 		font-size: 1.2rem;
-		margin-top: 0.6rem;
+		line-height: 1.6;
 		font-variation-settings: "wght" 100;
-		max-width: 24rem;
-		line-height: 1.8rem;
-	} 
-
-	/* Title of media */
-.media-container {
-	position: relative;
-	display: inline-block;
+		max-width: 26rem;
+	}
 }
 
-
-.media-title {
-	position: relative;
-	bottom: 20px;
-	left: 110%;
-	transform: translateX(-85%);
-	background: var(--accent-color1);
-	color: #EFEEEB;
-	padding: 1rem 4rem;
-	border-radius: 2px;
-	font-size: 1.2rem;
-	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
-	white-space: nowrap;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.media-container:hover .media-title {
-	opacity: 1;
-} 
-
-
-}
