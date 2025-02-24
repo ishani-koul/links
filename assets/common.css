@@ -12,6 +12,7 @@
 	--accent-color2: #DDD1AC;
 	--block-bg: #c3b7a867;
 	--container-margin: #e6e3df;
+	--sticky-font: "EB Garamond", serif;
 }
 
 * {
@@ -248,8 +249,8 @@ li.highlight {
 /* Text Style */
 blockquote {
 	max-width: 312px;
-	font-family: var(--font-family);
-	font-variation-settings: "wght" 100;
+	font-family: var(--sticky-font);
+	font-weight: 400;
 	font-size: 1.5rem;
 	line-height: 2.2rem;
 	background-color: var(--block-bg);
@@ -593,8 +594,8 @@ address {
 	/* Text Style */
 	blockquote {
 		max-width: 356px;
-		font-family: var(--font-family);
-		font-variation-settings: "wght" 100;
+		font-family: var(--sticky-font);
+		font-weight: 400;
 		font-size: 1.5rem;
 		line-height: 2.2rem;
 		background-color: var(--block-bg);
