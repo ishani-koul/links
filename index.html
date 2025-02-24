@@ -48,7 +48,7 @@
 				</div>
 		</header>
 		<section>
-			<div class="line"></div>
+			<!-- <div class="line"></div> -->
 			<div class="descriptions">
 				<p class="description1">
 					(n) Stillness in motion
@@ -57,19 +57,20 @@
 					The Japanese speak of Seijaku as serenity in the midst of activity. Not escaping from the world to some mountaintop. But finding the real meaning, fulfillment, energy, and wisdom in the midst of everyday hustle and bustle — building a silent and imperturbable center while active in the disappointments and triumphs of our busy lives. This is real fulfillment.
 				</p>
 			</div>
-			<div class="line2"></div>
+			<!-- <div class="line2"></div> -->
 		</section>
 		<main>
-			<label>
+			<label id="filter-label" style="display: none;">
 				<!-- <img src="assets/Filter.svg" alt="Icon" width="28" height="28"/> -->
 				<select class="filters" name="filters">
-					<option value="show-all-button"> 40 blocks</option>
-					<option value="show-video-button">Video blocks</option>
-					<option value="show-image-button">Image blocks</option>
-					<option value="show-text-button">Text blocks</option>
-					<option value="show-audio-button">Audio blocks</option>
+					<option value="show-all-button"> 40 blocks </option>
+					<option value="show-video-button"> Video blocks </option>
+					<option value="show-image-button"> Image blocks </option>
+					<option value="show-text-button"> Text blocks </option>
+					<option value="show-audio-button"> Audio blocks </option>
 				</select>
 			</label>
+			<div id="trigger" style="position: absolute; top: 250vh;"></div>
 			<div class="gallery">
 				<ul id="channel-blocks"></ul>
 			</div>

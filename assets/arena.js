@@ -87,7 +87,7 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li class="video-block ">
+				<li class="video-block class="upload-video">
 					<div class="media-container">
 						<video controls src="${ block.attachment.url }"></video>
 					<div class="media-title">${block.title}</div>
@@ -120,7 +120,7 @@ let renderBlock = (block) => {
 		else if (attachment.includes('audio')) {
 			let audioItem =
 				`
-				<li class="audio-block">
+				<li class="audio-block" class="upload-audio">
 				<div class="media-container">
 					<audio controls src="${ block.attachment.url }"></video> 
 					<div class="media-title">${block.title}</div>
@@ -257,22 +257,20 @@ selectElement.addEventListener('change', (event) => {
 });
 
 
+// Intersection Observer for the filter button 
+document.addEventListener("DOMContentLoaded", () => {
+	const filterLabel = document.getElementById("filter-label");
+	const trigger = document.getElementById("trigger");
 
+	const observer = new IntersectionObserver(
+		(entries, observer) => {
+			if (entries[0].isIntersecting) {
+				filterLabel.style.display = "flex";
+				observer.disconnect(); // Stop observing once it's visible
+			}
+		},
+		{ threshold: 0.1 }
+	);
 
-// Video Scroll Try
-// document.addEventListener("scroll", function () {
-// 	let scrollPosition = window.scrollY;
-// 	let videoContainer = document.getElementById("videoContainer");
-
-// 	// Define when the expansion should start
-// 	if (scrollPosition > 100) { 
-// 		videoContainer.style.width = "100%";
-// 		videoContainer.style.position = "fixed";
-// 		videoContainer.style.top = "0";
-// 		videoContainer.style.left = "0";
-// 		videoContainer.style.zIndex = "10";
-// 	} else {
-// 		videoContainer.style.width = "50%";
-// 		videoContainer.style.position = "relative";
-// 	}
-// });
+	observer.observe(trigger);
+});
