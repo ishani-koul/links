@@ -264,14 +264,13 @@ blockquote {
 /* Uploaded Audio Style */
 audio {
 	background-color: var(--block-bg);
-	filter: inherit;
-	width: 300px;
-	height: 310px;
+	/* filter: inherit; */
+	height: 400px; 
 	object-fit: cover;
 	padding-top: 2rem;
-	padding-bottom: 6rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
+	padding-bottom: 3rem; 
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 li .video-block {

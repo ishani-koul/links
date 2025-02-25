@@ -122,7 +122,7 @@ let renderBlock = (block) => {
 				`
 				<li class="audio-block" class="upload-audio">
 				<div class="media-container">
-					<audio controls src="${ block.attachment.url }"></video> 
+					<audio controls src="${ block.attachment.url }" style="width:100%; height:300px;"></audio> 
 					<div class="media-title">${block.title}</div>
 				</div>
 				</li>
